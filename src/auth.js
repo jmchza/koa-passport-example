@@ -1,34 +1,36 @@
 const passport = require('koa-passport');
 const LocalStrategy = require('passport-local').Strategy;
+const db = require('./db');
 
-const fetchUser = (() => {
-  const user = { id: 1, username: 'test', password: 'test' };
-  return async () => {
-    return user;
-  }
-})();
+passport.serializeUser((user, done) =>  done(null, user.id));
 
-passport.serializeUser((user, done) => {
-  done(null, user.id)
+passport.deserializeUser((id, done) => {
+  db.users.findById(id, (error, user) => done(error, user));
 });
 
-passport.deserializeUser(async (id, done) => {
-  try {
-    const user = await fetchUser();
-    done(null, user);
-  } catch(err) {
-    done(err);
+/**
+ * LocalStrategy
+ *
+ * This strategy is used to authenticate users based on a username and password.
+ * Anytime a request is made to authorize an application, we must ensure that
+ * a user is logged in before asking them to approve the request.
+ */
+passport.use(new LocalStrategy(
+  (username, password, done) => {
+    console.log('LocalStrategy...............................' + username + ' :: ' + password);
+    db.users.findByUsername(username, (error, user) => {
+      if (error) return done(error);
+      if (!user) return done(null, false);
+      if (user.password !== password) return done(null, false);
+      return done(null, user);
+    });
   }
-});
+));
 
-passport.use(new LocalStrategy((username, password, done) => {
-  fetchUser()
-    .then(user => {
-      if (username === user.username && password === user.password) {
-        done(null, user);
-      } else {
-        done(null, false);
-      }
-    })
-    .catch((err) => { done(err) });
-}));
+
+module.exports.setClient =  function(inClient) {
+  db.clients.setClient(inClient);
+  db.users.setClient(inClient);
+  db.authorizationCodes.setClient(inClient);
+  db.accessTokens.setClient(inClient);
+}
