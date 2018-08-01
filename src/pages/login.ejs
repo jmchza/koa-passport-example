@@ -1,0 +1,77 @@
+<header>
+	<style>
+	body {
+		    background-color: #007990;
+				text-align: center;
+		}
+		h1 {
+		    color: #008CBA;
+		    text-align: center;
+		}
+		p {
+		    font-family: verdana;
+		    font-size: 20px;
+		}
+		.logo{
+			image;
+			font-family: verdana;
+			color: #33e0ff
+		}
+		label{
+			font-family: verdana;
+			color: black
+		}
+		.button {
+				background-color: white;
+		    color: black;
+		    border: 2px solid #008CBA; /* Green */
+		    padding: 10px 12px;
+		    text-align: center;
+		    text-decoration: none;
+		    display: inline-block;
+		    font-size: 14px;
+				border-radius: 12px;
+				-webkit-transition-duration: 0.4s; /* Safari */
+		    transition-duration: 0.4s;
+		    cursor: pointer;
+				position: relative;
+				left: 120;
+		}
+
+		.button:hover {
+		    background-color: #E7D900; /* Green */
+		    color: white;
+		}
+		.boxes{
+			width: 18%;
+		}
+		.texting{
+			text-align: left;
+			position: relative;
+			left: 38%;
+		}
+	</style>
+</header>
+<body>
+<img src="./faktoora_blue_bkg.png" alt="Italian Trulli">
+<br/><br/>
+<h1>Anmeldung</h1>
+<form action="/login" method="post">
+	<div>
+  	<label>Username:</label>
+  	<input type="text" name="username" class="boxes"/><br/>
+	</div>
+	<br/>
+	<div>
+  	<label>Password:</label>
+  	<input type="password" name="password" class="boxes"/>
+	</div>
+	<div style="margin: 0 auto; padding: 15px 32px; display: inline-block;">
+	  <input type="submit" value="Submit" class="button"/>
+	</div>
+</form>
+<div  class="texting">
+	<p><small>Hint - bob:secret</small></p>
+	<p><small>Hint - joe:password</small></p>
+</div>
+</body>

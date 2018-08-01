@@ -17,6 +17,7 @@ module.exports.findById = (id, done) => {
 };
 
 module.exports.findByClientId = (clientId, done) => {
+  console.log('accessed.......');
   client.get("clients", function (err, counter) {
     for (let i = 0, len = counter; i < len; i++) {
       client.hgetall('client:'+i, function (err, obj) {

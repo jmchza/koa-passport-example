@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>OAuth2orize Provider Example</title>
+  </head>
+  <body>
+    <form action="http://localhost:3000/auth/oauth2/token" method="post">
+    	<div>
+      	<label>CODE:</label>
+      	<input type="text" name="code" value="<%= code %>"/><br/>
+    	</div>
+      <div>
+      	<label>grant_type:</label>
+        <input type="text" name="grant_type" value="password"/><br/>
+    	</div>
+      <div>
+      	<label>client_id:</label>
+        <input type="text" name="client_id" value="xyz123"/><br/>
+
+    	</div>
+      <div>
+      	<label>client_secret:</label>
+        <input type="text" name="client_secret" value="ssh-password"/><br/>
+    	</div>
+      <div>
+      	<label>redirect_uri:</label>
+        <input type="text" name="redirect_uri" value="http://localhost:3002/auth/oauth2-example/callback"/><br/>
+    	</div>
+      <div>
+      	<label>username:</label>
+        <input type="text" name="username" value="joe"/><br/>
+    	</div>
+      <div>
+      	<label>password:</label>
+        <input type="text" name="password" value="password"/><br/>
+    	</div>
+      <br/>
+    	<div>
+    	  <input type="submit" value="Submit" />
+    	</div>
+    </form>
+  </body>
+</html>

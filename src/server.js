@@ -1,5 +1,6 @@
 const Koa = require('koa');
-const session = require('koa-session');
+// const session = require('koa-session');
+const session = require("koa-generic-session")
 const bodyParser = require('koa-bodyparser');
 const passport = require('koa-passport');
 
